@@ -1,0 +1,339 @@
+/* Write C program to perform following matrix operations:
+ 1. Read two matrices from user
+ 2. Display two matrices
+ 3. Find sum of two matrices
+*/
+#include <stdio.h>
+int main() {
+ int a, b, c, d;
+ // Input of rows and columns of two matrices
+ printf("Enter rows and columns of first matrix: ");
+ scanf("%d %d", &a, &b);
+ printf("Enter rows and columns of second matrix: ");
+ scanf("%d %d", &c, &d);
+ int arr1[a][b], arr2[c][d], arr3[a][b];
+ // Input of elements of matrix 1
+ printf("Enter elements of first matrix: \n");
+ for (int i = 0; i < a; i++) {
+ for (int j = 0; j < b; j++) {
+ printf("Enter element a%d%d: ", i + 1, j + 1);
+ scanf("%d", &arr1[i][j]);
+ }
+ }
+ // Input of elements of matrix 2
+ printf("Enter elements of second matrix: \n");
+ for (int i = 0; i < c; i++) {
+ for (int j = 0; j < d; j++) {
+ printf("Enter element b%d%d: ", i + 1, j + 1);
+ scanf("%d", &arr2[i][j]);
+ }
+ }
+ // Display matrix 1
+ printf("First matrix: \n");
+ for (int i = 0; i < a; i++) {
+ for (int j = 0; j < b; j++) {
+ printf("%d ", arr1[i][j]);
+ }
+ printf("\n");
+ }
+ // Display matrix 2
+ printf("Second matrix: \n");
+ for (int i = 0; i < c; i++) {
+ for (int j = 0; j < d; j++) {
+ printf("%d ", arr2[i][j]);
+ }
+ printf("\n");
+ }
+ // Addition of two matrices
+ if (a == c && b == d) {
+ for (int i = 0; i < a; i++) {
+ for (int j = 0; j < b; j++) {
+ arr3[i][j] = arr1[i][j] + arr2[i][j];
+ }
+ }
+ // Displaying addition of two matrices
+ printf("Addition of two matrices: \n");
+ for (int i = 0; i < a; i++) {
+ for (int j = 0; j < b; j++) {
+ printf("%d ", arr3[i][j]);
+ }
+ printf("\n");
+ }
+ } else {
+ // If addition is not possible
+ printf("Addition is not possible \n");
+ }
+ return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ Write a program in C to find the maximum number between two numbers using a
+pointer
+*/
+#include <stdio.h>
+int main() {
+ int a, b;
+ printf("Enter two numbers: ");
+ scanf("%d %d", &a, &b);
+ int *p = &a, *q = &b;
+ if (*p > *q) {
+ printf("%d is greater than %d\n", *p, *q);
+ } else {
+ printf("%d is greater than %d\n", *q, *p);
+ }
+ return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Write a C program to perform following operations:
+ 1. Length of the String
+ 2. Reverse of the String
+ 3. Concatenation of two Strings
+ 4. Copying one string to another
+*/
+#include <stdio.h>
+#include <string.h>
+// Reverse the string
+void reverse(char *str) {
+ int i = 0, j = strlen(str) - 1;
+ while (i < j) {
+ char temp = str[i];
+ str[i] = str[j];
+ str[j] = temp;
+ i++;
+ j--;
+ }
+}
+int main() {
+ char a[20], b[20], ans[50];
+ int i, cmp;
+ printf("Enter the operation: \n");
+ printf("1) string length \n2) string reverse \n3) string concatenation \n4)
+string copy \n5) exit \n");
+ scanf("%d", &i);
+ printf("enter string 1: \n");
+ scanf("%s", a);
+ printf("enter string 2: \n");
+ scanf("%s", b);
+ switch (i) {
+ case 1:
+ printf("Length of string a is %lu\n", strlen(a));
+ printf("Length of string b is %lu\n", strlen(b));
+ break;
+ case 2:
+ reverse(a);
+ reverse(b);
+ printf("reverse of string a is %s\n", a);
+ printf("reverse of string b is %s\n", b);
+ break;
+ case 3:
+ strcat(a, b);
+ printf("concatenated string is %s\n", a);
+ break;
+ case 4:
+ strcpy(a, b);
+ printf("a: %s \nb: %s \n", a, b);
+ printf("string copy successful\n");
+ break;
+ case 5:
+ return 0;
+ case 6:
+ printf("invalid input\n");
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ Write C program to print all VOWEL and CONSONANT characters separately.
+*/
+#include <stdio.h>
+#include <string.h>
+int main() {
+ char str[100], vowel[100], consonant[100], c;
+
+ // Get input string from user
+ printf("Enter a string: ");
+ scanf("%s", str);
+ int len = strlen(str);
+
+ // Initialize vowel and consonant arrays
+ vowel[0] = '\0';
+ consonant[0] = '\0';
+ for (int i = 0; i < len; i++) {
+ // Check if the character is a vowel
+ if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' ||
+str[i] == 'u' ||
+ str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' ||
+str[i] == 'U') {
+ // Append to vowel array
+ c = str[i];
+ strncat(vowel, &c, 1);
+ } else {
+ // Append to consonant array
+ c = str[i];
+ strncat(consonant, &c, 1);
+ }
+ }
+ // Print vowels and consonants
+ printf("Vowels: %s\n", vowel);
+ printf("Consonants: %s\n", consonant);
+ return 0;
+}
+
+
+
+
+
+
+
+
+
+
+/*
+ Write a Java program using a to print reverse of a Number.
+*/
+import java.util.Scanner;
+public class program_18 {
+ public static void main(String[] args) {
+ Scanner scanner = new Scanner(System.in);
+ System.out.print("Enter a number: ");
+ int num = scanner.nextInt();
+ int reversedNum = reverseNumber(num);
+ System.out.println("The reverse of " + num + " is " + reversedNum);
+ }
+ public static int reverseNumber(int num) {
+ int reversed = 0;
+ while (num != 0) {
+ int digit = num % 10;
+ reversed = reversed * 10 + digit;
+ num /= 10;
+ }
+ return reversed;
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ Write a program to define a structure for customer bank account that holds
+information
+ like account number, name of account holder, balance, internet banking
+facility availed (Yes
+ or No), account type (saving, recurring, deposit):
+ a) Read account details for N customers.
+ b) Identify the golden, silver and general customers.
+ c) Golden customers: Balance > 10, 00,000. Silver Customers: Balance > 5, 00,
+000 and
+ < 10, 00,000. General customers: Balance <5, 00, 000.
+ d) Display the list of customers availing the internet banking facility.
+*/
+#include <stdio.h>
+#include <string.h>
+// Structure to hold customer bank account details
+typedef struct {
+ int accountNumber;
+ char accountHolderName[50];
+ float balance;
+ int internetBankingFacility;
+ char accountType[20];
+} BankAccount;
+int main() {
+ BankAccount customers[100];
+ int numCustomers, i;
+
+ printf("Enter the number of customers: ");
+ scanf("%d", &numCustomers);
+
+ // Read account details for N customers
+ for (i = 0; i < numCustomers; i++) {
+ printf("\nEnter details for Customer %d:\n", i + 1);
+ printf("Account Number: ");
+ scanf("%d", &customers[i].accountNumber);
+ printf("Account Holder Name: ");
+ scanf(" %[^\n]", customers[i].accountHolderName);
+ printf("Balance: ");
+ scanf("%f", &customers[i].balance);
+ printf("Internet Banking Facility (0 for No, 1 for Yes): ");
+ scanf("%d", &customers[i].internetBankingFacility);
+ printf("Account Type (Saving/Recurring/Deposit): ");
+ scanf(" %[^\n]", customers[i].accountType);
+ }
+
+ // Identify golden, silver, and general customers
+ printf("\nGolden Customers (Balance > 10,00,000):\n");
+ for (i = 0; i < numCustomers; i++) {
+ if (customers[i].balance > 1000000)
+ printf("%s\n", customers[i].accountHolderName);
+ }
+
+ printf("\nSilver Customers (5,00,000 < Balance < 10,00,000):\n");
+ for (i = 0; i < numCustomers; i++) {
+ if (customers[i].balance > 500000 && customers[i].balance <= 1000000)
+ printf("%s\n", customers[i].accountHolderName);
+ }
+
+ printf("\nGeneral Customers (Balance < 5,00,000):\n");
+ for (i = 0; i < numCustomers; i++) {
+ if (customers[i].balance <= 500000)
+ printf("%s\n", customers[i].accountHolderName);
+ }
+
+ // Display the list of customers availing the internet banking facility
+ printf("\nCustomers availing the Internet Banking Facility:\n");
+ for (i = 0; i < numCustomers; i++) {
+ if (customers[i].internetBankingFacility)
+ printf("%s\n", customers[i].accountHolderName);
+ }
+
+ return 0;
+}

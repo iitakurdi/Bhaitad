@@ -1,0 +1,400 @@
+/* A class teacher wants to keep record of 10 students in the class along with the names 
+and 
+marks 
+obtained in 5 subjects. Write a C program with structure that displays : 
+a) Overall percentage result of the class 
+b) Total number of passing students in the class, 
+c) Total number of students failing in one subject 
+d) Total number of disƟncƟons in the class.*/
+#include <stdio.h>
+struct student{
+ int s1,s2,s3,s4,s5;
+ char name[50];
+ int failno;
+}std[10];
+int main()
+{
+ int i,pass_ct=0,fail_in_one=0,dist_ct=0;
+ float overall =0;
+ float sum=0;
+ int percentage[10];
+ for(i=1;i<=10;i++)
+ {
+ printf("Enter name of student %d : ",i);
+ scanf("%s",&std[i].name);
+ printf("Enter marks of five subjects of student %d : ",i);
+ scanf("%d %d %d %d %d",&std[i].s1,&std[i].s2,&std[i].s3,&std[i].s4,&std[i].s5);
+ percentage[i]=(std[i].s1+std[i].s2+std[i].s3+std[i].s4+std[i].s5)/5;
+ sum=sum+percentage[i];
+ if(std[i].s1>=40&&std[i].s2>=40&&std[i].s3>=40&&std[i].s4>=40&&std[i].s5>=40)
+ {
+ pass_ct++;
+ }
+ if(percentage[i]>=75)
+ {
+ dist_ct++;
+ }
+ 
+ }
+ overall=sum/10;
+ for(i=1;i<=10;i++)
+ {
+ std[i].failno=0;
+ if(std[i].s1<40){
+ std[i].failno++;
+ 
+ }
+ if(std[i].s2<40){
+ std[i].failno++;
+ 
+ }
+ if(std[i].s3<40){
+ std[i].failno++;
+ 
+ }
+ if(std[i].s4<40){
+ std[i].failno++;
+ 
+ }
+ if(std[i].s5<40){
+ std[i].failno++;
+ 
+ }
+ if(std[i].failno==1){
+ fail_in_one++;
+ }
+ }
+ printf("\nNumber of students passed : %d",pass_ct);
+ printf("\nNumber of students with distinction : %d",dist_ct);
+ printf("\nOverall percentage of class : %f ",overall);
+ printf("\nNumber of students failed in one subject : %d ",fail_in_one);
+ return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FIBONACCI;
+#include <stdio.h>
+int fib(int n);
+int main() {
+ int num;
+ printf("Enter the number of terms in Fibonacci Series: ");
+ scanf("%d", &num);
+ 
+ // Fibonacci series with recursion
+ printf("Fibonacci series with recursion: ");
+ for (int i = 0; i < num; i++) {
+ printf("%d ", fib(i));
+ }
+ printf("\n");
+ 
+ // Fibonacci series without recursion
+ int t1 = 0, t2 = 1, next;
+ printf("Fibonacci series without recursion: %d %d ", t1, t2);
+ for (int i = 0; i < num - 2; i++) {
+ next = t1 + t2;
+ t1 = t2;
+ t2 = next;
+ printf("%d ", next);
+ }
+ 
+ return 0;
+}
+int fib(int n) {
+ if (n <= 1) {
+ return n;
+ }
+ return fib(n - 1) + fib(n - 2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+COMPLEX:
+/******************************************************************************
+Write a program that uses funcƟons to perform the following operaƟons:
+a) Reading a complex Number 
+b) WriƟng a complex number
+c) AddiƟon of two complex numbers
+d) MulƟplicaƟon of two complex numbers.
+*******************************************************************************/
+#include <stdio.h>
+struct complex{
+ int real;
+ int img;
+ 
+}s1,s2,s3;
+void addition(int x1,int x2,int y1,int y2);
+void subtraction(int x1,int x2,int y1,int y2);
+void multiplication(int x1,int x2,int y1,int y2);
+int main()
+{
+ int ch;
+ printf("Enter real part of first complex number : ");
+ scanf("%d",&s1.real);
+ printf("Enter imaginary part of first complex number : ");
+ scanf("%d",&s1.img);
+ printf("First complex number : %d + %di",s1.real,s1.img);
+ printf("\nEnter real part of second complex number : ");
+ scanf("%d",&s2.real);
+ printf("Enter imaginary part of second complex number : ");
+ scanf("%d",&s2.img);
+ 
+ printf("Second complex number : %d + %di",s2.real,s2.img);
+ 
+ printf("\nYour choices are : \n1)Addition\n2)Subtraction \n3)Multiplication");
+ scanf("%d",&ch);
+ 
+ switch(ch){
+ case 1:
+ addition(s1.real,s2.real,s1.img,s2.img);
+ break;
+ case 2:
+ subtraction(s1.real,s2.real,s1.img,s2.img);
+ break;
+ case 3:
+ multiplication(s1.real,s2.real,s1.img,s2.img);
+ break;
+ default:
+ printf("Enter valid choice");
+ 
+ }
+ 
+ return 0;
+}
+void addition(int x1,int x2,int y1,int y2)
+{
+ int z1=x1+x2;
+ int z2=y1+y2;
+ printf("Addition is %d + %di",z1,z2);
+}
+void subtraction(int x1,int x2,int y1,int y2)
+{
+ int z1=x1-x2;
+ int z2=y1-y2;
+ printf("Addition is %d + %di",z1,z2);
+}
+void multiplication(int x1,int x2,int y1,int y2)
+{
+ int z1=(x1*x2 - y1*y2);
+ int z2=(x1*y2 + y1*x2);
+ printf("Multiplication is %d + %di",z1,z2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+SWAP
+/******************************************************************************
+Write a program to swap values of two elements. Use funcƟon and pass argument using
+call by Value and call by reference. 
+*******************************************************************************/
+#include <stdio.h>
+void swap_by_value(int m,int n);
+void swap_by_ref(int *a,int *b);
+int main()
+{
+ int num1,num2;
+ printf("Enter two Numbers :");
+ scanf("%d %d",&num1,&num2);
+ printf("\nBefore Swapping by call by value : %d and %d",num1,num2);
+ swap_by_value(num1,num2);
+ printf("\nBefore Swapping by call by reference : %d and %d",num1,num2);
+ swap_by_ref(&num1,&num2);
+ printf("\nAfter Swapping by call by reference : %d and %d",num1,num2);
+ 
+ 
+ return 0;
+}
+void swap_by_value(int m,int n)
+{
+ int temp;
+ temp=m;
+ m=n;
+ n=temp;
+ printf("\nAfter Swapping inside call by value function : %d and %d ",m,n);
+}
+void swap_by_ref(int *a,int *b)
+{
+ int temp;
+ temp=*a;
+ *a=*b;
+ *b=temp;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+JAVA:
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+class Calci{
+ int x;
+ int y;
+ 
+ Calci(int a,int b){
+ x=a;
+ y=b;
+ }
+ public void display(){
+ System.out.println("x is "+x);
+ System.out.println("y is "+y);
+ 
+ }
+ public int add(){
+ return x+y;
+ 
+ }
+ public int sub(){
+ return x-y;
+ }
+}
+public class Main{
+ public static void main(String args[]){
+ Calci c1 = new Calci(4,17);
+ System.out.println("The numbers are :");
+ c1.display();
+ System.out.println("Addition is "+c1.add());
+ System.out.println("Subtraction is "+c1.sub());
+ 
+ 
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+int reverse(int n);
+int main()
+{
+ int num;
+ printf("Enter the number : ");
+ scanf("%d",&num);
+ printf("Original number : %d",num);
+ printf("\nReversed number : %d ",reverse(num));
+ return 0;
+}
+int reverse(int n){
+ static int reversed=0;
+ int remainder;
+ if(n==0){
+ return 0;
+ }
+ remainder=n%10;
+ reversed=reversed*10+remainder;
+ reverse(n/10);
+ return reversed;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//12. Write C program to find factorial of a number using recursion.
+#include <stdio.h>
+int fact(int n);
+int main()
+{
+ int num;
+ printf("Enter a number : ");
+ scanf("%d",&num);
+ printf("Factorial of %d is %d ",num,fact(num));
+ 
+ return 0;
+}
+int fact (int n)
+{
+ if(n==0 || n==1){
+ return 1;
+ }
+ else{
+ return (n* fact(n-1)) ;
+ }
+ 
+ 
+ 
+}
